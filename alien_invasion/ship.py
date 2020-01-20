@@ -15,12 +15,23 @@ class Ship():
 
         self.move_right = False
         self.move_left = False
+        self.move_up = False
+        self.move_down = False
+    
     def blitme(self):
         """在指定位置绘制飞船"""
         self.screen.blit(self.image, self.rect)
+    
     def update(self):
         if (self.move_left and self.rect.left>0):
             self.center -= self.ai_settings.ship_speed_factor
         elif (self.move_right and self.rect.right<self.screen_rect.right):
             self.center += self.ai_settings.ship_speed_factor
+        elif(self.move_up and self.rect.bottom>self.rect.height):
+            self.rect.bottom -= self.ai_settings.ship_speed_factor
+        elif(self.move_down and self.rect.bottom<self.screen_rect.bottom):
+            self.rect.bottom += self.ai_settings.ship_speed_factor
         self.rect.centerx = self.center
+
+    def ship_center(self):
+        self.center = self.screen_rect.centerx
