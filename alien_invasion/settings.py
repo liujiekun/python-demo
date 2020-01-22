@@ -22,6 +22,10 @@ class Settings():
         self.alien_speed_factor = 5
         self.fleet_drop_speed = 30
         self.fleet_direction = 1
+        # 记分 
+        self.alien_points = 50
+        self.score_scale = 1.5
+
 
         # 以什么样的速度加快游戏节奏
         self.speedup_scale = 1.3
@@ -40,3 +44,5 @@ class Settings():
         self.ship_speed_factor *= self.speedup_scale 
         self.bullet_speed_factor *= self.speedup_scale 
         self.alien_speed_factor *= self.speedup_scale
+        self.alien_points = int(self.alien_points*self.score_scale)
+
